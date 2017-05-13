@@ -1,0 +1,971 @@
+{% extends 'base.html' %} {% block content %}{% load static %}
+
+<head>
+    <link href="//fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/registandlogin.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/allstyle.css' %}" type="text/css" media="all">
+    <script src="{% static 'sweetalert-master/dist/sweetalert-dev.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'sweetalert-master/dist/sweetalert.css' %}">
+    <script src="{% static 'sweetalert-master/dist/sweetalert.min.js' %}"></script>
+</head>
+<style>
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    /*background: url('{% static 'images/loginBG.png' %}');*/
+}
+
+#ban {
+    background: url('{% static 'images/loginBG2.png' %}');
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    color: #FFF;
+    /*font-family: 'Quicksand', sans-serif;*/
+    text-align: center;
+}
+
+#loginBG {
+    background: url('{% static 'images/loginBG2.png' %}');
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    color: #FFF;
+    /*font-family: 'Quicksand', sans-serif;*/
+    text-align: center;
+}
+
+#obBG {
+    /*background: url('{% static 'images/obBG.png' %}');*/
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    color: #FFF;
+    /*font-family: 'Quicksand', sans-serif;*/
+    /*text-align: center;*/
+}
+
+#osBG {
+    background: url('{% static 'images/van.jpg' %}');
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    color: #FFF;
+    /*font-family: 'Quicksand', sans-serif;*/
+    /*text-align: center;*/
+}
+
+.service {
+    background: url('{% static 'images/use.jpg' %}');
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    color: #FFF;
+    /*font-family: 'Quicksand', sans-serif;*/
+    /*text-align: center;*/
+}
+
+h2 {
+    color: black;
+    text-align: left;
+}
+
+h3 {
+    font-size: 25px;
+    font-weight: normal;
+}
+
+h1 {
+    color: black;
+    font-weight: bold;
+}
+
+.btn-primary {
+    border-radius: 25px;
+    height: 50px;
+    width: 97%;
+    display: inline-block;
+    text-align: center;
+    background-color: #3B5998;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 84%;
+    padding: 16px 10px 15px 60px;
+    font-size: 14px;
+    color: #fff;
+    /*background: transparent;*/
+    border: none;
+    border: 2px solid #fff;
+    /*outline: none;*/
+    margin-bottom: 26px;
+    /*color: #fff;*/
+    /*border-radius:25px;*/
+    font-family: 'Quicksand', sans-serif;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"]:hover,
+{
+    background-color: #fff;
+}
+
+s .fancy {
+    line-height: 0.5;
+    text-align: center;
+}
+
+.fancy span {
+    display: inline-block;
+    position: relative;
+}
+
+.fancy span:before,
+.fancy span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+    top: 0;
+    width: 170px;
+}
+
+.fancy span:before {
+    right: 50%;
+    margin-right: 15px;
+}
+
+.fancy span:after {
+    left: 50%;
+    margin-left: 15px;
+}
+
+label {
+    /*font-weight: bold;*/
+    font-size: 17px;
+}
+
+section {
+    padding: 75px 0;
+}
+
+.section-heading {
+    margin: 30px 0;
+    font-size: 4em;
+}
+
+.section-lead {
+    margin: 30px 0;
+}
+
+.section-paragraph {
+    margin: 30px 0;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+@media(max-width:768px) {
+    section {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    .section-heading {
+        font-size: 2em;
+    }
+}
+
+
+/*.container{
+     padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 0%;
+}*/
+
+.ih-item {
+    position: relative;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+    pointer-events: none;
+}
+
+.ih-item,
+.ih-item * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    pointer-events: auto;
+}
+
+.ih-item a {
+    color: #333;
+}
+
+.ih-item a:hover {
+    text-decoration: none;
+}
+
+.ih-item img {
+    width: 100%;
+    height: auto;
+}
+
+.ih-item.circle {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+}
+
+.ih-item.circle .img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.ih-item.circle .img:before {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.3);
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+}
+
+.ih-item.circle .img img {
+    border-radius: 50%;
+}
+
+.ih-item.circle .info {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    border-radius: 50%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.ih-item.square {
+    position: relative;
+    width: 316px;
+    height: 216px;
+    border: 8px solid #fff;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.ih-item.square .info {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.ih-item.circle.effect3 .img {
+    z-index: 11;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+}
+
+.ih-item.circle.effect3.colored .info {
+    background: #1a4a72;
+}
+
+.ih-item.circle.effect3 .info {
+    background: #333333;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+}
+
+.ih-item.circle.effect3 .info h3 {
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+    letter-spacing: 2px;
+    font-size: 22px;
+    margin: 0 30px;
+    padding: 55px 0 0 0;
+    height: 110px;
+    text-shadow: 0 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.ih-item.circle.effect3 .info p {
+    color: #bbb;
+    padding: 10px 5px;
+    font-style: italic;
+    margin: 0 30px;
+    font-size: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.ih-item.circle.effect3.left_to_right .img {
+    -webkit-transform: scale(1) translateX(0);
+    -moz-transform: scale(1) translateX(0);
+    -ms-transform: scale(1) translateX(0);
+    -o-transform: scale(1) translateX(0);
+    transform: scale(1) translateX(0);
+}
+
+.ih-item.circle.effect3.left_to_right .info {
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.ih-item.circle.effect3.left_to_right a:hover .img {
+    -webkit-transform: scale(0.5) translateX(100%);
+    -moz-transform: scale(0.5) translateX(100%);
+    -ms-transform: scale(0.5) translateX(100%);
+    -o-transform: scale(0.5) translateX(100%);
+    transform: scale(0.5) translateX(100%);
+}
+
+.ih-item.circle.effect3.left_to_right a:hover .info {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.ih-item.circle.effect17 .info {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+}
+
+.ih-item.circle.effect17 .info h3 {
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+    letter-spacing: 2px;
+    font-size: 22px;
+    margin: 0 30px;
+    padding: 55px 0 0 0;
+    height: 110px;
+    text-shadow: 0 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.ih-item.circle.effect17 .info p {
+    color: #bbb;
+    padding: 10px 5px;
+    font-style: italic;
+    margin: 0 30px;
+    font-size: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+}
+
+.ih-item.circle.effect17 a:hover .img:before {
+    box-shadow: inset 0 0 0 110px #333333, inset 0 0 0 16px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 0 110px rgba(0, 0, 0, 0.6), inset 0 0 0 5px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.ih-item.circle.effect17 a:hover .info {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}
+
+.ih-item.circle.effect17 a:hover .info p {
+    opacity: 1;
+}
+
+.ih-item.circle.effect17.colored a:hover .img:before {
+    box-shadow: inset 0 0 0 110px #1a4a72, inset 0 0 0 16px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 0 110px rgba(26, 74, 114, 0.6), inset 0 0 0 16px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.jumbotron {
+    background-color: rgba(255, 255, 255, 1.0);
+    transition: all 0.2s ease;
+    /*border:2px solid #525C7A;*/
+    margin-top: 10px;
+    margin-left: 0 !important;
+    box-sizing: border-box;
+    border-radius: 0px;
+    background-clip: padding-box;
+    min-height: 340px;
+}
+
+.container {
+    display: inline-block;
+    position: relative;
+    width: 65%;
+    /*background: url('https://s20.postimg.org/o09gf7fvx/bag.jpg') no-repeat center top;*/
+    background-size: contain;
+}
+
+#dummy {
+    padding-top: 29%;
+}
+
+#rectangle {
+    width: 25px;
+    height: 25px;
+    background: #e84c3d;
+}
+
+#username {
+    color: #FAD733;
+    font-size: 20px;
+    margin-top: -5px;
+    font-weight: bold;
+    margin-left: -10px;
+}
+
+
+/*.crop {
+ height: 300px;
+ width: 300px;
+ overflow: hidden;
+}
+.crop img {
+ height: auto;
+ width: 300px;
+}
+*/
+
+hr.style-two {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+hr.style-eight {
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: left;
+    margin-bottom: -20px;
+}
+
+#textalignLeft {
+    text-align: left;
+    ;
+}
+
+.list-unstyled.love li,
+.list-unstyled.no-love li {
+    background: url('http://d26mw3lpqa99qj.cloudfront.net/prod-fool/sell/yes-15d4ba569f9f4beb7d8cfd8adc8ed886.png') no-repeat;
+    padding: 0 0 5% 45px;
+    margin-left: 40px;
+    text-align: left;
+}
+
+
+/* change the no-love image */
+
+.list-unstyled.no-love li {
+    background: url('http://d26mw3lpqa99qj.cloudfront.net/prod-fool/sell/yes-15d4ba569f9f4beb7d8cfd8adc8ed886.png') no-repeat;
+}
+
+.bghead {
+    background-image: url('../../static/images/bg3.jpg');
+    background-repeat: no-repeat;
+}
+
+.small {
+    background-image: url('../../static/images/smalldog.png');
+    background-repeat: no-repeat;
+    height: xxpx;
+}
+
+.large {
+    background-image: url('../../static/images/large.png');
+    background-repeat: no-repeat;
+    height: xxpx;
+}
+
+
+/* GENERAL BUTTON STYLING */
+
+button,
+button::after {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+button {
+    background: none;
+    border: 4px solid #2ecc71;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin: 1em auto;
+    padding: 2em 6em;
+    position: relative;
+    text-transform: uppercase;
+}
+
+button::before,
+button::after {
+    background: #2ecc71;
+    content: '';
+    position: absolute;
+    z-index: -1;
+}
+
+button:hover {
+    color: #fff;
+    background: #2ecc71;
+    border-color: #2ecc71;
+}
+
+
+/* BUTTON 1 */
+
+.btn-1::after {
+    height: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.btn-1:hover:after {
+    height: 100%;
+}
+
+
+/* BUTTON 2 */
+
+.btn-2::after {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 0;
+}
+
+.btn-2:hover:after {
+    width: 100%;
+}
+
+
+/* BUTTON 3 */
+
+.btn-3::after {
+    height: 0;
+    left: 50%;
+    top: 50%;
+    width: 0;
+}
+
+.btn-3:hover:after {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+
+/* BUTTON 4 */
+
+.btn-4::before {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.btn-4::after {
+    background: #2ecc71;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.btn-4:hover:after {
+    height: 0;
+    left: 50%;
+    top: 50%;
+    width: 0;
+}
+
+
+/* BUTTON 5 */
+
+.btn-5 {
+    overflow: hidden;
+}
+
+.btn-5::after {
+    /*background-color: #f00;*/
+    height: 100%;
+    left: -35%;
+    top: 0;
+    transform: skew(50deg);
+    transition-duration: 0.6s;
+    transform-origin: top left;
+    width: 0;
+}
+
+.btn-5:hover:after {
+    height: 100%;
+    width: 135%;
+}
+
+span.title {
+    margin: 0 auto;
+    color: #f2f2f2;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2.85rem;
+    text-align: center;
+    font-style: italic;
+    display: block;
+}
+
+.but {
+    background-image: url('../../static/images/dog5.jpg');
+    background-repeat: no-repeat;
+}
+</style>
+<!-- banner-bottom -->
+<div id="loginBG" style="">
+    <br>
+    <center>
+        <h1 style="text-align: center;font-size: 50px;color:#fff;">GROOMING WITH CARE</h1>
+    </center>
+    <div class="welcome-grids" style="margin-top: 35px">
+        <div class="col-md-6 agile-welcome-grid">
+            <div class="grid">
+                <div class="col-md-6 agileits-left">
+                </div>
+                <div class="col-md-6 agileits-left">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 agileinfo-welcome-right">
+            <div class="container">
+                <!-- <div class="agileinfo-dot"> -->
+                <center>
+                    <h2 style="font-weight: bold;text-align: center;color:#fff">Log In</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <label for="" style="color:#fff;">Username</label> {{ form.username }}
+                        <label for="" style="color:#fff;">Password</label> {{ form.password }}
+                        <input type="submit" value="LOGIN" />
+                    </form>
+                    <br>
+                    <div class="fancy amp" style="color:#c6c6c6 "><span>OR</span></div>
+                    <br>
+                    <button type="button" class="btn btn-primary"><i style="font-size: 35px;margin-left: -20px;margin-top: 0px;  vertical-align: middle;color:white;background-color: transparent;" class="fa fa-facebook-square"></i><a style="color: white;margin-left: 20px;" href="{% url 'social:begin' 'facebook' %}"> Login with your facebook </a></li>
+                    </button>
+                 
+                        <br>
+                        <h3 style="color: white">Don't have an account? <a style="color: #FAD733;font-size: 20px;font-weight: bold;" href="/register"> Sign UP</a></h3>
+                </center>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <br>
+    <br>
+    <br>
+</div>
+<!-- <section> -->
+<div class="container">
+    <!-- <div class="jumbotron"> -->
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <h1 style="text-align: left;">OUR BUSINESS</h1>
+            <p style="text-align: left;font-size: 20px;">Our company is unique and extraordinary than other ordinary dog bathing store. Our bathing van go directly to customer's house and we provide a booking system for customer to choose their time through the application. We provide a high quality of dog bathing and more services.</p>
+        </div>
+        <br>
+        <br>
+        <div class="col-md-6">
+            <div id="osBG">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="service">
+    <br>
+    <br>
+    <br>
+    <!-- <div class="jumbotron"> -->
+    <h1 style="text-align: center;color:white">OUR SERVICE</h1>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <p style="text-align: center;font-size: 20px;">We also care for customer's dog. We provide complete and safe dog services, you can trust us to take care of your beloved dogs.</p>
+        </div>
+    </div>
+    <!-- </div> -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+<!-- </div> -->
+<!-- </div> -->
+<!-- //services -->
+<div class="container">
+    <!-- service -->
+    <div class="jumbotron">
+        <div class="row">
+            <h2 style="text-align: center;">You will get all the SERVICES</h2>
+            <div class="col-sm-4">
+                <!-- normal -->
+                <div class="ih-item circle effect17 col-centered">
+                    <a>
+                        <div class="img"><img src="../../static/calendar/images/sn1.png" alt="img"></div>
+                        <div class="info">
+                            <h3>BATHING</h3>
+                            <p>อาบน้ำ</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- end normal -->
+            </div>
+            <div class="col-sm-4">
+                <!-- normal -->
+                <div class="ih-item circle effect17 col-centered">
+                    <a>
+                        <div class="img"><img src="../../static/calendar/images/sn2.png" alt="img"></div>
+                        <div class="info">
+                            <h3>GROOMING</h3>
+                            <p>ตัดขน</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- end normal -->
+            </div>
+            <div class="col-sm-4">
+                <!-- normal -->
+                <div class="ih-item circle effect17 col-centered">
+                    <a>
+                        <div class="img"><img src="../../static/calendar/images/sn3.png" alt="img"></div>
+                        <div class="info">
+                            <h3>CUTTING FINGERNAILS</h3>
+                            <p>ตัดเล็บ</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- end normal -->
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-4">
+                <!-- normal -->
+                <div class="ih-item circle effect17 col-centered">
+                    <a>
+                        <div class="img"><img src="../../static/calendar/images/sn4.png" alt="img"></div>
+                        <div class="info">
+                            <h3>EAR CLEANING</h3>
+                            <p>ทำความสะอาดหู</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- end normal -->
+            </div>
+            <div class="col-sm-4">
+                <!-- normal -->
+                <div class="ih-item circle effect17 col-centered">
+                    <a>
+                        <div class="img"><img src="../../static/calendar/images/sn5.png" alt="img"></div>
+                        <div class="info">
+                            <h3>BRUSHING TEETH</h3>
+                            <p>แปรงฟัน</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- end normal -->
+            </div>
+            <div class="col-sm-4">
+                <!-- normal -->
+                <div class="ih-item circle effect17 col-centered">
+                    <a>
+                        <div class="img"><img src="../../static/calendar/images/sn6.png" alt="img"></div>
+                        <div class="info">
+                            <h3>PERFUME</h3>
+                            <p>น้ำหอม</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- end normal -->
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-6 small">
+                <p style="font-size: 40px; font-weight: bold;">ONLY <em style="color:#2ecd71;"> 600 ฿ </em></p>
+                <div class="col-xs-2"></div>
+                <ul class="list-unstyled love">
+                    <li>For dog's weight less than 15</li>
+                    <li>For small dog</li>
+                </ul>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+            <div class="col-sm-6 large">
+                <p style="font-size: 40px; font-weight: bold;">ONLY <em style="color:#2ecd71;"> 1000 ฿ </em></p>
+                <div class="col-xs-2"></div>
+                <ul class="list-unstyled love">
+                    <li>For dog's weight more than 15</li>
+                    <li>For large dog</li>
+                </ul>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+</div>
+<div class="but">
+    <br>
+    <br>
+    <br>
+    <span class="title">EASY  FAST  RELIABLE</span>
+    <br>
+    <div class="sweet">  <button class="btn-3">Booking Now</button></div>
+  
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+<br>
+<br>
+<br>
+<br> {% endblock %}{% block script %}
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $(".scroll").click(function(event) {
+        event.preventDefault();
+        $('html,body').animate({
+            scrollTop: $(this.hash).offset().top
+        }, 1000);
+    });
+});
+document.querySelector('div.sweet button').onclick = function(){
+    swal("Please Login!", "Please Login before booking. Thank you.", "error");
+};
+
+</script>
+{% endblock script %}

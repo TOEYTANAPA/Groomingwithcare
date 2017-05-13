@@ -1,0 +1,235 @@
+{% extends "base.html" %} {% block content %}
+
+<style type="text/css">
+body {
+    /*padding: 0; background: url(../../static/images/2.jpg) no-repeat;*/
+}
+
+#username {
+        color: #FAD733;
+        font-size: 20px;
+        margin-top: -5px;
+        font-weight: bold;
+        margin-left: -10px;
+}
+.fh{
+     background: url(../../static/images/2.jpg) no-repeat;
+      background-color: white;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+
+.jumbotron {
+    /*background-color: rgba(0, 0, 0, 0.2);*/
+     background: url(../../static/images/2.jpg) no-repeat;
+  background-size: auto;
+  
+    transition: all 0.2s ease;
+    /*border:2px solid #525C7A;*/
+    margin-top: 10px;
+    margin-left: 0 !important;
+    box-sizing: border-box;
+    border-radius: 0px;
+    background-clip: padding-box;
+    min-height: 340px;
+}
+
+{% load static %}
+</style>
+    <!-- banner -->
+    <div class="header" style="background: transparent;">
+        <div class="container">
+            <br>
+            <div class="header-right">
+                <div class="top-nav">
+                    <nav class="navbar navbar-default">
+                        <div class="navbar-header">
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <img src="{% static 'images/Logo.png' %}" width="10%" height="10%" style="margin-top: -30px">
+                            <ul class="nav navbar-nav">
+                                         <li><a class="active" href="/service">Home</a></li>
+                                           <li><a href="/booking">Booking</a></li>
+                            <li><a href="/profile">Profile</a></li>
+                      
+                            <li><a href="/comment">Comment</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                            <li>
+                                <p id="username"> {{ current_user.username }}</p>
+                            </li>
+                            <li><a href="/logout/">Logout</a></li>
+                            </ul>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //banner -->
+    <br> <br> <br>
+
+    <div class="container" style="text-align: left; background: url(../../static/images/2.jpg) no-repeat;">
+        <div class="row">
+            <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <address>
+                            <strong id="name"></strong>
+                            <br>
+                            <strong id="address"></strong>
+                            <br>
+                         
+                        </address>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                        <p>
+                            <em id="day"></em>
+                        </p>
+                        <p>
+                            <em id="time1"></em>
+                        </p>
+                        <p>
+                            <em id="time2"></em>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center">
+                        <h1>Receipt</h1>
+                    </div>
+                    <div id="insertTable">
+                    </div>
+                    <button onclick="save()" type="button" class="btn btn-success btn-lg btn-block">Please capture this for confirm your transaction.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %} {% block script %}
+<script type="application/x-javascript">
+      var data = {{data|safe}};
+        // console.log(data.service.length);
+        $('#name').text(data.user);
+        $('#address').text(data.location);
+        $('#day').text("Booking : "+data.day);
+        if(data.count == 2 ){
+            if(data.time1== 1) {
+                 $('#time1').text("9:00-11:00 น.");
+            } else if (data.time1 == 2){
+                  $('#time1').text("11:00-13:00 น.");
+            } else if(data.time1 == 3){
+                 $('#time1').text("13:00-15:00 น.");
+            } else if(data.time1 == 4){
+                 $('#time1').text("15:00-17:00 น.");
+            } else if(data.time1 == 5){
+                 $('#time1').text("17:00-19:00 น.");
+            } else if(data.time1 == 6){
+                 $('#time1').text("19:00-21:00 น.");
+            }
+
+            if(data.time2== 1) {
+                 $('#time2').text("9:00-11:00 น.");
+            } else if (data.time2 == 2){
+                  $('#time2').text("11:00-13:00 น.");
+            } else if(data.time2 == 3){
+                 $('#time2').text("13:00-15:00 น.");
+            } else if(data.time2 == 4){
+                 $('#time2').text("15:00-17:00 น.");
+            } else if(data.time2 == 5){
+                 $('#time2').text("17:00-19:00 น.");
+            } else if(data.time2 == 6){
+                 $('#time2').text("19:00-21:00 น.");
+            }
+            
+           
+        } else if(data.count == 1){
+              if(data.time== 1) {
+                 $('#time1').text("9:00-11:00 น.");
+            } else if (data.time == 2){
+                  $('#time1').text("11:00-13:00 น.");
+            } else if(data.time == 3){
+                 $('#time1').text("13:00-15:00 น.");
+            } else if(data.time == 4){
+                 $('#time1').text("15:00-17:00 น.");
+            } else if(data.time == 5){
+                 $('#time1').text("17:00-19:00 น.");
+            } else if(data.time == 6){
+                 $('#time1').text("19:00-21:00 น.");
+            }
+
+        }
+       
+        // var table = document.getElementById('table');
+
+        var rowLength = data.id_d.length;
+
+        // for(var i=1; i<=rowLength; i+=1){
+        //   var row = table.rows[i];
+
+        //   var cellLength = 4;
+        //   for(var y=0; y<cellLength; y+=1){
+        //     var cell = row.cells[y];
+        //     cell.append("eiei");
+        //     //do something with every cell here
+        //   }
+        // }
+
+        var mytable = '<table class="table table-hover" id="table">';
+        mytable +=' <thead><tr><th>Service</th><th>Size</th><th class="text-center">Price</th> <th class="text-center">Total</th> </tr> </thead> <tbody><tr>';
+                           
+                       // wash haircut nailcut cleanear teeth shop
+    var price;
+  for(var i=0; i<rowLength; i+=1){
+      if(data.size[i][0] == "S"){
+               price = 600;  
+        } else if(data.size[i][0] == "B"){
+               price = 1000;
+           } 
+           mytable += '</tr><tr>';
+
+
+           mytable += '<td class="col-md-9"><em>'+data.id_d[i]+'</em></h4></td>';
+           mytable += '<td class="col-md-1">'+data.size[i]+'</td>';
+           mytable += '<td class="col-md-1 text-center">'+price+'฿'+'</td>'; 
+           mytable += '<td class="col-md-1 text-center">'+price+'฿'+'</td>';           
+               mytable += '</tr>' ;       
+           
+}
+
+
+mytable += '<td></td><td></td> <td class="text-right"><p> <strong>Subtotal: </strong> </p> <p><strong>Tax: </strong></p></td><td class="text-center"> <p> <strong>'+data.total+'฿'+'</strong> </p> <p><strong>0฿</strong></p></td></tr> <tr><td>   </td><td>   </td> <td class="text-right"><h4><strong>Total: </strong></h4></td> <td class="text-center text-danger"><h4><strong>'+data.total+'฿'+'</strong></h4></td>  </tr></tbody> </table>';
+
+// mytable += ' <button type="button" class="btn btn-success btn-lg btn-block">'+
+// ' Save<span class="glyphicon glyphicon-chevron-right"></span>'+'</button>';
+$("#insertTable").html(mytable);
+// document.write(mytable);
+
+
+$(document).ready(function() {
+    $('body').on('click', 'td.warning input', function() {
+        swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: 'btn-danger',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: "No, cancel plx!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    swal("Deleted!", "Your imaginary file has been deleted!", "success");
+                } else {
+                    swal("Cancelled", "Your imaginary file is safe :)", "error");
+                }
+            });
+    });
+
+});
+</script>
+{% endblock script %}

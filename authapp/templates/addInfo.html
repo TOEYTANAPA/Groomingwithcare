@@ -1,0 +1,185 @@
+ {% extends "base.html" %} {% block content %}{% load static %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
+<!-- Meta-Tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="{% static 'css/registandlogin.css' %}" type="text/css" media="all">
+<!-- //Meta-Tags -->
+<!-- Custom-Stylesheet-Links -->
+<!-- Bootstrap-CSS -->
+<!--  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all"> -->
+<!-- Index-Page-CSS -->
+<!--  <link rel="stylesheet" href="css/style.css"         type="text/css" media="all"> -->
+<!-- PopUp-Box-CSS -->
+<!--  <link rel="stylesheet" href="css/chocolat.css"      type="text/css" media="all"> -->
+<!-- //Custom-Stylesheet-Links -->
+<!-- <link rel="stylesheet" href="{% static 'css/registandlogin.css' %}" type="text/css" media="all"> -->
+<style>
+html, 
+body {
+    height: 100%;
+}
+button {
+    color: #2f2f2f;
+    border: solid 1px #2f2f2f;
+    background: none;
+    background: #F44336;
+    outline: none;
+    -webkit-appearance: none;
+    border: solid 1px #F44336;
+    font-size: .875em;
+    color: #ffffff;
+    font-weight: 600;
+    padding: .7em 1em;
+    text-decoration: none;
+    letter-spacing: 1px;
+    background: #F44336;
+    margin: 1em 0 0;
+    transition: .5s all;
+    -webkit-transition: .5s all;
+    -moz-transition: .5s all;
+    -o-transition: .5s all;
+    -ms-transition: .5s all;
+
+}
+
+.w3-agile-news-img a img {
+    width: 100%;
+    /*margin:0 0 1em 0;*/
+}
+
+
+.submit-w3l  input[type="submit"] {
+    background:#fff;
+    color:#fff;
+}
+.submit-w3l  input[type="submit"]:hover {
+    background:#fff;
+    color:#fff;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+    width: 10px;
+    padding: 16px 10px 15px 60px;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    border: 1px solid #ffffff;
+    outline: none;
+    margin-bottom: 26px;
+    color: #bbb;
+    border-radius: 25px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+input[type="text"] {
+    /*background: url("../images/user.png") no-repeat 20px 12px;*/
+    background-size: 24px;
+}
+
+.submit-w3l  input[type="submit"] {
+    background:#fff;
+    color:#fff;
+}
+.submit-w3l  input[type="submit"]:hover {
+    background:#fff;
+    color:#fff;
+}
+select {
+    border-radius: 25px;
+    font-size: 14px;
+    height: 33px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#textInput {
+    width: 200px;
+}
+
+.fh{
+     /*background: url(../../static/images/2.jpg) no-repeat;*/
+      background-color: white;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+
+.banner {
+   /*background: url(../../static/images/2.jpg) no-repeat;*/
+      background-color: white;
+    background-attachment: fixed;
+    background-size: 100%;
+    color: #FFF;
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+}
+/**/
+</style>
+
+<!-- news -->
+<div class="banner">
+<br><br><br><br>
+    <div class="container">
+        <div class="agileinfo-dot">
+           <h2>UPDATE YOUR PROFILE FIRST </h2>
+            <h3>We need your information before booking </h3>
+                <div class="w3-agileits-news-grids">
+                    <div class="col-md-3 news-left">
+                        <div class="w3-agile-news-img">
+                            <!-- <img id="blah" src="#" alt="your image" width="100%" height="100%" /> -->
+                            <!-- <img id="blah" src="#" alt="your image" width="270px" height="250px" /> -->
+                            <!-- <a href="single.html"> <img src="{% static 'images/g2.jpg' %}"></a> -->
+                        </div>
+                        <!-- <div class="clearfix"> </div> -->
+                    </div>
+                    <div class="col-md-6 contact-form">
+                        <div class="ndews-right-gri">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <!-- <div id="textInput" style="white-space:nowrap;"> -->
+                                <label>Name: </label> {{ person.username }}
+                                <!-- </div> -->
+                                <!-- <div id="textInput" style="white-space:nowrap;margin-bottom: 15px"> -->
+                                <label>Address: </label>
+                                <br> {{ person.address }}
+                                <!-- </div> -->
+                                <!-- <div  style="white-space:nowrap;"> -->
+                                <!-- <label>Choose Picture: </label>{{ person.picPerson }} -->
+                                <!-- </div> -->
+                                <br>
+                                <center>
+                                  
+                                     <button style="width: 100%;border-radius: 50px;" class="button " type="submit" >Submit </button>
+                                </center>
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+      
+    </div><br><br><br><br><br><br>
+</div>
+<!-- //news -->
+ {% endblock content %} {% block script %}
+<script type="text/javascript">
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgInp").change(function() {
+    readURL(this);
+});
+</script>
+{% endblock script %}
